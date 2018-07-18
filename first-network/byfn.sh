@@ -176,7 +176,7 @@ function networkUp() {
 # Stop the orderer and peers, backup the ledger for orderer and peers, cleanup chaincode containers and images
 # and relaunch the orderer and peers with latest tag
 function upgradeNetwork() {
-  docker inspect -f '{{.Config.Volumes}}' orderer.example.com | grep -q '/var/hyperledger/production/orderer'
+  docker inspect -f '{{.Config.Volumes}}' orderer.peach.com | grep -q '/var/hyperledger/production/orderer'
   if [ $? -ne 0 ]; then
     echo "ERROR !!!! This network does not appear to be using volumes for its ledgers, did you start from fabric-samples >= v1.1.x?"
     exit 1
@@ -199,11 +199,11 @@ function upgradeNetwork() {
   docker-compose $COMPOSE_FILES up -d --no-deps cli
 
   echo "Upgrading orderer"
-  docker-compose $COMPOSE_FILES stop orderer.example.com
-  docker cp -a orderer.example.com:/var/hyperledger/production/orderer $LEDGERS_BACKUP/orderer.example.com
-  docker-compose $COMPOSE_FILES up -d --no-deps orderer.example.com
+  docker-compose $COMPOSE_FILES stop orderer.peach.com
+  docker cp -a orderer.peach.com:/var/hyperledger/production/orderer $LEDGERS_BACKUP/orderer.peach.com
+  docker-compose $COMPOSE_FILES up -d --no-deps orderer.peach.com
 
-  for PEER in peer0.org1.example.com peer1.org1.example.com peer0.org2.example.com peer1.org2.example.com; do
+  for PEER in peer0.org1.peach.com peer1.org1.peach.com peer0.org2.peach.com peer1.org2.peach.com; do
     echo "Upgrading peer $PEER"
 
     # Stop the peer and backup its ledger
@@ -234,7 +234,7 @@ function upgradeNetwork() {
 # Tear down running network
 function networkDown() {
   # stop org3 containers also in addition to org1 and org2, in case we were running sample to add org3
-  docker-compose -f $COMPOSE_FILE -f $COMPOSE_FILE_COUCH -f $COMPOSE_FILE_ORG3 down --volumes --remove-orphans
+  docker-compose -f $COMPOSE_FILE -f $COMPOSE_FILE_COUCH down --volumes --remove-orphans
 
   # Don't remove the generated artifacts -- note, the ledgers are always removed
   if [ "$MODE" != "restart" ]; then
@@ -271,11 +271,11 @@ function replacePrivateKey() {
   # The next steps will replace the template's contents with the
   # actual values of the private key file names for the two CAs.
   CURRENT_DIR=$PWD
-  cd crypto-config/peerOrganizations/org1.example.com/ca/
+  cd crypto-config/peerOrganizations/org1.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
   sed $OPTS "s/CA1_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
-  cd crypto-config/peerOrganizations/org2.example.com/ca/
+  cd crypto-config/peerOrganizations/org2.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
   sed $OPTS "s/CA2_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
@@ -347,7 +347,7 @@ function generateCerts() {
 # These headers are important, as we will pass them in as arguments when we create
 # our artifacts.  This file also contains two additional specifications that are worth
 # noting.  Firstly, we specify the anchor peers for each Peer Org
-# (``peer0.org1.example.com`` & ``peer0.org2.example.com``).  Secondly, we point to
+# (``peer0.org1.peach.com`` & ``peer0.org2.peach.com``).  Secondly, we point to
 # the location of the MSP directory for each member, in turn allowing us to store the
 # root certificates for each Org in the orderer genesis block.  This is a critical
 # concept. Now any network entity communicating with the ordering service can have
@@ -379,7 +379,7 @@ function generateChannelArtifacts() {
   # Note: For some unknown reason (at least for now) the block file can't be
   # named orderer.genesis.block or the orderer will fail to launch!
   set -x
-  configtxgen -profile TwoOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+  configtxgen -profile SevenOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
   res=$?
   set +x
   if [ $res -ne 0 ]; then
@@ -391,38 +391,109 @@ function generateChannelArtifacts() {
   echo "### Generating channel configuration transaction 'channel.tx' ###"
   echo "#################################################################"
   set -x
-  configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID $CHANNEL_NAME
+  configtxgen -profile SevenOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID $CHANNEL_NAME
   res=$?
   set +x
   if [ $res -ne 0 ]; then
     echo "Failed to generate channel configuration transaction..."
     exit 1
   fi
-
   echo
+
   echo "#################################################################"
   echo "#######    Generating anchor peer update for Org1MSP   ##########"
   echo "#################################################################"
   set -x
-  configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org1MSP
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org1MSP
   res=$?
   set +x
   if [ $res -ne 0 ]; then
     echo "Failed to generate anchor peer update for Org1MSP..."
     exit 1
   fi
-
   echo
+
   echo "#################################################################"
   echo "#######    Generating anchor peer update for Org2MSP   ##########"
   echo "#################################################################"
   set -x
-  configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate \
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
     ./channel-artifacts/Org2MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org2MSP
   res=$?
   set +x
   if [ $res -ne 0 ]; then
     echo "Failed to generate anchor peer update for Org2MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org3MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org4MSP..."
+    exit 1
+  fi
+
+  echo
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org5MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org6MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile SevenOrgsChannel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org7MSP..."
     exit 1
   fi
   echo
@@ -437,7 +508,7 @@ CLI_TIMEOUT=10
 # default for delay between commands
 CLI_DELAY=3
 # channel name defaults to "mychannel"
-CHANNEL_NAME="mychannel"
+CHANNEL_NAME="peach"
 # use this as the default docker-compose yaml definition
 COMPOSE_FILE=docker-compose-cli.yaml
 #
