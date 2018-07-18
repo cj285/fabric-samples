@@ -262,7 +262,6 @@ Orderer: &OrdererDefaults
 #
 ################################################################################
 Profiles:
-
     SevenOrgsOrdererGenesis:
         Capabilities:
             <<: *ChannelCapabilities
