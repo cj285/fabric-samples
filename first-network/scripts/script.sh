@@ -54,7 +54,7 @@ createChannel() {
 }
 
 joinChannel () {
-	for org in 1 2; do
+	for org in 1 2 3 4 5 6 7; do
 	    for peer in 0 1; do
 		joinChannelWithRetry $peer $org
 		echo "===================== peer${peer}.org${org} joined channel '$CHANNEL_NAME' ===================== "
@@ -128,13 +128,62 @@ chaincodeQuery 0 1 100
 echo "Sending invoke transaction on peer0.org1 peer0.org2..."
 chaincodeInvoke 0 1 0 2
 
-## Install chaincode on peer1.org2
+#----
+# Install chaincode on peer1.org1
+echo "Installing chaincode on peer1.org1..."
+installChaincode 1 1
+
+# Query on chaincode on peer1.org1, check if the result is 90
+echo "Querying chaincode on peer1.org1..."
+chaincodeQuery 1 1 90
+
+# Install chaincode on peer1.org2
 echo "Installing chaincode on peer1.org2..."
 installChaincode 1 2
 
 # Query on chaincode on peer1.org2, check if the result is 90
 echo "Querying chaincode on peer1.org2..."
-chaincodeQuery 1 2 100
+chaincodeQuery 1 2 90
+
+# Install chaincode on peer1.org3
+echo "Installing chaincode on peer1.org3..."
+installChaincode 1 3
+
+# Query on chaincode on peer1.org3, check if the result is 90
+echo "Querying chaincode on peer1.org3..."
+chaincodeQuery 1 3 90
+
+# Install chaincode on peer1.org4
+echo "Installing chaincode on peer1.org4..."
+installChaincode 1 4
+
+# Query on chaincode on peer1.org4, check if the result is 90
+echo "Querying chaincode on peer1.org4..."
+chaincodeQuery 1 4 90
+
+# Install chaincode on peer1.org5
+echo "Installing chaincode on peer1.org5..."
+installChaincode 1 5
+
+# Query on chaincode on peer1.org5, check if the result is 90
+echo "Querying chaincode on peer1.org5..."
+chaincodeQuery 1 5 90
+
+# Install chaincode on peer1.org6
+echo "Installing chaincode on peer1.org6..."
+installChaincode 1 6
+
+# Query on chaincode on peer1.org6, check if the result is 90
+echo "Querying chaincode on peer1.org6..."
+chaincodeQuery 1 6 90
+
+# Install chaincode on peer1.org7
+echo "Installing chaincode on peer1.org7..."
+installChaincode 1 7
+
+# Query on chaincode on peer1.org7, check if the result is 90
+echo "Querying chaincode on peer1.org7..."
+chaincodeQuery 1 7 90
 
 echo
 echo "========= All GOOD, BYFN execution completed =========== "
