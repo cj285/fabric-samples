@@ -165,7 +165,7 @@ installChaincode() {
   setGlobals $PEER $ORG
   VERSION=${3:-1.0}
   set -x
-  peer chaincode install -n mycc -v ${VERSION} -l ${LANGUAGE} -p ${CC_SRC_PATH} >&log.txt
+  peer chaincode install -n ficc -v ${VERSION} -l ${LANGUAGE} -p ${CC_SRC_PATH} >&log.txt
   res=$?
   set +x
   cat log.txt
@@ -185,12 +185,12 @@ instantiateChaincode() {
   # the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode instantiate -o orderer.peach.com:7050 -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
+    peer chaincode instantiate -o orderer.peach.com:7050 -C $CHANNEL_NAME -n ficc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]' -P "OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode instantiate -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
+    peer chaincode instantiate -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ficc -l ${LANGUAGE} -v 1.0 -c '{"Args":[""]}' -P "OR ('Org1MSP.peer','Org2MSP.peer','Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
     res=$?
     set +x
   fi
@@ -232,10 +232,10 @@ chaincodeQuery() {
     sleep $DELAY
     echo "Attempting to Query peer${PEER}.org${ORG} ...$(($(date +%s) - starttime)) secs"
     set -x
-    peer chaincode query -C $CHANNEL_NAME -n mycc -c '{"Args":["query","a"]}' >&log.txt
+    peer chaincode query -C $CHANNEL_NAME -n ficc -c '{"Args":["getPayload","init"]}' >&log.txt
     res=$?
     set +x
-    test $res -eq 0 && VALUE=$(cat log.txt | awk '/Query Result/ {print $NF}')
+    test $res -eq 0 && VALUE=$(cat log.txt)
     test "$VALUE" = "$EXPECTED_RESULT" && let rc=0
     # removed the string "Query Result" from peer chaincode query command
     # result. as a result, have to support both options until the change
@@ -243,7 +243,6 @@ chaincodeQuery() {
     test $rc -ne 0 && VALUE=$(cat log.txt | egrep '^[0-9]+$')
     test "$VALUE" = "$EXPECTED_RESULT" && let rc=0
   done
-  echo
   cat log.txt
   if test $rc -eq 0; then
     echo "===================== Query successful on peer${PEER}.org${ORG} on channel '$CHANNEL_NAME' ===================== "
@@ -341,22 +340,49 @@ parsePeerConnectionParameters() {
 
 # chaincodeInvoke <peer> <org> ...
 # Accepts as many peer/org pairs as desired and requests endorsement from each
-chaincodeInvoke() {
+chaincodeModify() {
   parsePeerConnectionParameters $@
   res=$?
-  verifyResult $res "Invoke transaction failed on channel '$CHANNEL_NAME' due to uneven number of peer and org parameters "
+  verifyResult $res "Modify transaction failed on channel '$CHANNEL_NAME' due to uneven number of peer and org parameters "
 
   # while 'peer chaincode' command can get the orderer endpoint from the
   # peer (if join was successful), let's supply it directly as we know
   # it using the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode invoke -o orderer.peach.com:7050 -C $CHANNEL_NAME -n mycc $PEER_CONN_PARMS -c '{"Args":["invoke","a","b","10"]}' >&log.txt
+    peer chaincode invoke -o orderer.peach.com:7050 -C $CHANNEL_NAME -n ficc $PEER_CONN_PARMS -c '{"Args":["modifyPayload", "init", "modifiedInit"]}' >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode invoke -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n mycc $PEER_CONN_PARMS -c '{"Args":["invoke","a","b","10"]}' >&log.txt
+    peer chaincode invoke -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ficc $PEER_CONN_PARMS -c '{"Args":["modifyPayload", "init", "modifiedInit"]}' >&log.txt
+    res=$?
+    set +x
+  fi
+  cat log.txt
+  verifyResult $res "Invoke execution on $PEERS failed "
+  echo "===================== Invoke transaction successful on $PEERS on channel '$CHANNEL_NAME' ===================== "
+  echo
+}
+
+# chaincodeInvoke <peer> <org> ...
+# Accepts as many peer/org pairs as desired and requests endorsement from each
+chaincodeSet() {
+  parsePeerConnectionParameters $@
+  res=$?
+  verifyResult $res "Set transaction failed on channel '$CHANNEL_NAME' due to uneven number of peer and org parameters "
+
+  # while 'peer chaincode' command can get the orderer endpoint from the
+  # peer (if join was successful), let's supply it directly as we know
+  # it using the "-o" option
+  if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
+    set -x
+    peer chaincode invoke -o orderer.peach.com:7050 -C $CHANNEL_NAME -n ficc $PEER_CONN_PARMS -c '{"Args":["createPayload", "init", "testInit"]}' >&log.txt
+    res=$?
+    set +x
+  else
+    set -x
+    peer chaincode invoke -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ficc $PEER_CONN_PARMS -c '{"Args":["createPayload", "init", "testInit"]}' >&log.txt
     res=$?
     set +x
   fi
