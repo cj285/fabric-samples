@@ -38,12 +38,12 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org1
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/4eec1559cecb15ceeb2f77560ff153fba1620519920e874277887cc3a18040e2_sk
     ports:
       - "7054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org1.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg1
@@ -55,12 +55,12 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org2
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/88e4a51a998c43d62e51612c6b4997480a959072cd2efffcfce53f855c2d1bc9_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/29984b48049cb03ec881c726d67c7edfcd85c45400aa4dde54c2aab33a5e2fd6_sk
     ports:
       - "8054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/88e4a51a998c43d62e51612c6b4997480a959072cd2efffcfce53f855c2d1bc9_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org2.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg2
@@ -72,14 +72,14 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-orge
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/8e05aa63dd815b2ddcda4792ce6e7258534a72217cfcf9e69a8de9dee52265ec_sk
     ports:
       - "9054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
-      - ./crypto-config/peerOrganizations/org1.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./crypto-config/peerOrganizations/org3.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg3
     networks:
       - byfn
@@ -89,12 +89,12 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org4
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org4.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/88e4a51a998c43d62e51612c6b4997480a959072cd2efffcfce53f855c2d1bc9_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a661b746ecf35076d6eecd58fc2b8628da4cd4793a815da6f81759ccee741357_sk
     ports:
       - "10054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org4.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/88e4a51a998c43d62e51612c6b4997480a959072cd2efffcfce53f855c2d1bc9_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org4.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg4
@@ -106,14 +106,14 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org5
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org5.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/77a6110300ffbb69cd527d4c4a9a8deb2e3570a3766b3179a342839bcba12568_sk
     ports:
       - "11054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
-      - ./crypto-config/peerOrganizations/org1.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./crypto-config/peerOrganizations/org5.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg5
     networks:
       - byfn
@@ -123,14 +123,14 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org6
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org6.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/88e4a51a998c43d62e51612c6b4997480a959072cd2efffcfce53f855c2d1bc9_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/c28cc71810600f6cdb1bcf77bc605c4aed7ae7ff7c2e317feb999fd6a856ab9d_sk
     ports:
       - "12054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org6.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/88e4a51a998c43d62e51612c6b4997480a959072cd2efffcfce53f855c2d1bc9_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
-      - ./crypto-config/peerOrganizations/org2.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./crypto-config/peerOrganizations/org6.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg6
     networks:
       - byfn
@@ -140,12 +140,12 @@ services:
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-org7
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org7.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1995948c229de8890f49c89e75abcdf0c49bab2526ace646348e706fb1770ba1_sk
     ports:
       - "13054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/2e5be522076b6bcda6b79e5aadf1ca1c015ed24a89585b14c845bcf323b43e44_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org7.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peerOrg7
@@ -285,7 +285,7 @@ services:
       - CORE_PEER_ID=cli
       - CORE_PEER_ADDRESS=peer0.org1.peach.com:7051
       - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_TLS_ENABLED=true
+      # - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.peach.com/peers/peer0.org1.peach.com/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.peach.com/peers/peer0.org1.peach.com/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.peach.com/peers/peer0.org1.peach.com/tls/ca.crt

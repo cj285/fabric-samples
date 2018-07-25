@@ -185,7 +185,7 @@ instantiateChaincode() {
   # the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode instantiate -o orderer.peach.com:7050 -C $CHANNEL_NAME -n ficc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]' -P "OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
+    peer chaincode instantiate -o orderer.peach.com:7050 -C $CHANNEL_NAME -n ficc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[""]}' -P "OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
     res=$?
     set +x
   else

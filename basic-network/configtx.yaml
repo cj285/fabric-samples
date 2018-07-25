@@ -128,4 +128,3 @@ Profiles:
             <<: *ApplicationDefaults
             Organizations:
                 - *Org1
-
