@@ -33,122 +33,122 @@ networks:
   byfn:
 
 services:
-  ca0:
+  ca.org1.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-org1
+      - FABRIC_CA_SERVER_CA_NAME=ca.org1.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/4eec1559cecb15ceeb2f77560ff153fba1620519920e874277887cc3a18040e2_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/98d574b1d902932dd0b9ea680fcafc33884aa279820867d230bf38ae9bde6931_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org1.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg1
+    container_name: ca.org1.peach.com
     networks:
       - byfn
 
-  ca1:
+  ca.org2.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-org2
+      - FABRIC_CA_SERVER_CA_NAME=ca.org2.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/29984b48049cb03ec881c726d67c7edfcd85c45400aa4dde54c2aab33a5e2fd6_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/8e3767ffc140e392f907ed136abb60ac4b2e4c24e00347045063e839c077a92d_sk
     ports:
       - "8054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org2.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg2
+    container_name: ca.org2.peach.com
     networks:
       - byfn
 
-  ca2:
+  ca.org3.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-orge
+      - FABRIC_CA_SERVER_CA_NAME=ca.org3.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/8e05aa63dd815b2ddcda4792ce6e7258534a72217cfcf9e69a8de9dee52265ec_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/e95dea25f82c348720b7be3de18506e43f581aeb6025680fd96711ef85c9b1d0_sk
     ports:
       - "9054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org3.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg3
+    container_name: ca.org3.peach.com
     networks:
       - byfn
 
-  ca3:
+  ca.org4.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-org4
+      - FABRIC_CA_SERVER_CA_NAME=ca.org4.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org4.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a661b746ecf35076d6eecd58fc2b8628da4cd4793a815da6f81759ccee741357_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org4.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/c52012a3ff2dbc8667d411eaa8e303ea085c99244ccb858c2f05d51839b893e8_sk
     ports:
       - "10054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org4.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg4
+    container_name: ca.org4.peach.com
     networks:
       - byfn
 
-  ca4:
+  ca.org5.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-org5
+      - FABRIC_CA_SERVER_CA_NAME=ca.org5.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org5.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/77a6110300ffbb69cd527d4c4a9a8deb2e3570a3766b3179a342839bcba12568_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org5.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/d5b7ca07706efb942802d6db315fb7bf2936ab7ac77543c93295610ee257364c_sk
     ports:
       - "11054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org5.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg5
+    container_name: ca.org5.peach.com
     networks:
       - byfn
 
-  ca5:
+  ca.org6.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-org6
+      - FABRIC_CA_SERVER_CA_NAME=ca.org6.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org6.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/c28cc71810600f6cdb1bcf77bc605c4aed7ae7ff7c2e317feb999fd6a856ab9d_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org6.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a9992ea472686a3c2536358ef90829e249308c8b9fe943872d51cb0d238cece5_sk
     ports:
       - "12054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org6.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg6
+    container_name: ca.org6.peach.com
     networks:
       - byfn
 
-  ca6:
+  ca.org7.peach.com:
     image: hyperledger/fabric-ca:$IMAGE_TAG
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-org7
+      - FABRIC_CA_SERVER_CA_NAME=ca.org7.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org7.peach.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1995948c229de8890f49c89e75abcdf0c49bab2526ace646348e706fb1770ba1_sk
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org7.peach.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/f472f8d34402952025957059d75fca33281a40f42dc9fc38fa3a6b2220ab1fca_sk
     ports:
       - "13054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
       - ./crypto-config/peerOrganizations/org7.peach.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca_peerOrg7
+    container_name: ca.org7.peach.com
     networks:
       - byfn
 
@@ -161,7 +161,6 @@ services:
       - byfn
 
   peer0.org1.peach.com:
-    container_name: peer0.org1.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org1.peach.com
@@ -169,7 +168,6 @@ services:
       - byfn
 
   peer1.org1.peach.com:
-    container_name: peer1.org1.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org1.peach.com
@@ -177,7 +175,6 @@ services:
       - byfn
 
   peer0.org2.peach.com:
-    container_name: peer0.org2.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org2.peach.com
@@ -185,7 +182,6 @@ services:
       - byfn
 
   peer1.org2.peach.com:
-    container_name: peer1.org2.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org2.peach.com
@@ -193,7 +189,6 @@ services:
       - byfn
 
   peer0.org3.peach.com:
-    container_name: peer0.org3.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org3.peach.com
@@ -201,7 +196,6 @@ services:
       - byfn
 
   peer1.org3.peach.com:
-    container_name: peer1.org3.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org3.peach.com
@@ -209,7 +203,6 @@ services:
       - byfn
 
   peer0.org4.peach.com:
-    container_name: peer0.org4.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org4.peach.com
@@ -217,7 +210,6 @@ services:
       - byfn
 
   peer1.org4.peach.com:
-    container_name: peer1.org4.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org4.peach.com
@@ -225,7 +217,6 @@ services:
       - byfn
 
   peer0.org5.peach.com:
-    container_name: peer0.org5.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org5.peach.com
@@ -233,7 +224,6 @@ services:
       - byfn
 
   peer1.org5.peach.com:
-    container_name: peer1.org5.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org5.peach.com
@@ -241,7 +231,6 @@ services:
       - byfn
 
   peer0.org6.peach.com:
-    container_name: peer0.org6.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org6.peach.com
@@ -249,7 +238,6 @@ services:
       - byfn
 
   peer1.org6.peach.com:
-    container_name: peer1.org6.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org6.peach.com
@@ -257,7 +245,6 @@ services:
       - byfn
 
   peer0.org7.peach.com:
-    container_name: peer0.org7.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org7.peach.com
@@ -265,7 +252,6 @@ services:
       - byfn
 
   peer1.org7.peach.com:
-    container_name: peer1.org7.peach.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer1.org7.peach.com

@@ -42,6 +42,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.org1.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org1.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org1.peach.com/users/Admin@org1.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org1MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -62,13 +63,13 @@ services:
       - CORE_PEER_ADDRESS=peer1.org1.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org1.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org1.peach.com/users/Admin@org1.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org1MSP
     volumes:
         - /var/run/:/host/var/run/
         - ../crypto-config/peerOrganizations/org1.peach.com/peers/peer1.org1.peach.com/msp:/etc/hyperledger/fabric/msp
         - ../crypto-config/peerOrganizations/org1.peach.com/peers/peer1.org1.peach.com/tls:/etc/hyperledger/fabric/tls
         - peer1.org1.peach.com:/var/hyperledger/production
-
     ports:
       - 8051:7051
       - 8053:7053
@@ -82,6 +83,7 @@ services:
       - CORE_PEER_ID=peer0.org2.peach.com
       - CORE_PEER_ADDRESS=peer0.org2.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org2.peach.com/users/Admin@org2.peach.com/msp
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org2.peach.com:7051
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
@@ -103,6 +105,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.org2.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org2.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org2.peach.com/users/Admin@org2.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -123,6 +126,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.org3.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org3.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org3.peach.com/users/Admin@org3.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org3MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -143,6 +147,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.org3.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org3.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org3.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org3.peach.com/users/Admin@org3.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org3MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -163,6 +168,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.org4.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org4.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org4.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org4.peach.com/users/Admin@org4.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org4MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -183,6 +189,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.org4.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org4.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org4.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org4.peach.com/users/Admin@org4.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org4MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -203,6 +210,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.org5.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org5.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org5.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org5.peach.com/users/Admin@org5.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org5MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -223,6 +231,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.org5.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org5.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org5.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org5.peach.com/users/Admin@org5.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org5MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -243,6 +252,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.org6.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org6.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org6.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org6.peach.com/users/Admin@org6.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org6MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -263,6 +273,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.org6.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org6.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org6.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org6.peach.com/users/Admin@org6.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org6MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -283,6 +294,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.org7.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org7.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org7.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org7.peach.com/users/Admin@org7.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org7MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -303,6 +315,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.org7.peach.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org7.peach.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org7.peach.com:7051
+      # - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/crypto/peerOrganizations/org7.peach.com/users/Admin@org7.peach.com/msp
       - CORE_PEER_LOCALMSPID=Org7MSP
     volumes:
         - /var/run/:/host/var/run/
