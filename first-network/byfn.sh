@@ -266,7 +266,7 @@ function replacePrivateKey() {
   fi
 
   # Copy the template to the file that will be modified to add the private key
-  cp docker-compose-e2e-template.yaml docker-compose-e2e.yaml
+  cp docker-compose-e2e-template.yaml docker-compose-cli.yaml
 
   # The next steps will replace the template's contents with the
   # actual values of the private key file names for the two CAs.
@@ -274,31 +274,31 @@ function replacePrivateKey() {
   cd crypto-config/peerOrganizations/org1.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA1_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA1_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org2.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA2_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA2_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org2.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA3_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA3_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org3.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA4_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA4_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org4.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA5_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA5_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org5.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA6_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA6_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org6.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA7_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml
+  sed $OPTS "s/CA7_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-cli.yaml
   cd crypto-config/peerOrganizations/org7.peach.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
