@@ -138,48 +138,48 @@ installChaincode 1 7
 echo "Instantiating chaincode on peer0.org1..."
 instantiateChaincode 0 1
 
-sleep 10
+# sleep 10
 
-# Invoke chaincode on peer0.org1 and peer0.org2
-echo "Sending invoke (set) transaction on peer0.org1 peer0.org2..."
-chaincodeSet 0 1 0 2
+# # Invoke chaincode on peer0.org1 and peer0.org2
+# echo "Sending invoke (set) transaction on peer0.org1 peer0.org2..."
+# chaincodeSet 0 1 0 2
 
-# Query chaincode on peer0.org1
-echo "Querying chaincode on peer0.org1..."
-chaincodeQuery 0 1 '{"payload":"testInit"}'
+# # Query chaincode on peer0.org1
+# echo "Querying chaincode on peer0.org1..."
+# chaincodeQuery 0 1 '{"payload":"testInit"}'
 
-# Invoke chaincode on peer0.org1 and peer0.org2
-echo "Sending invoke (modify) transaction on peer1.org3 peer0.org2..."
-chaincodeModify 0 1 0 2
+# # Invoke chaincode on peer0.org1 and peer0.org2
+# echo "Sending invoke (modify) transaction on peer1.org3 peer0.org2..."
+# chaincodeModify 0 1 0 2
 
-## Query on all other peer 1 in all organization
-# Query on chaincode on peer1.org1, check if the result is 90
-echo "Querying chaincode on peer1.org1..."
-chaincodeQuery 1 1 '{"payload":"modifiedInit"}'
+# ## Query on all other peer 1 in all organization
+# # Query on chaincode on peer1.org1, check if the result is 90
+# echo "Querying chaincode on peer1.org1..."
+# chaincodeQuery 1 1 '{"payload":"modifiedInit"}'
 
-# Query on chaincode on peer1.org2, check if the result is 90
-echo "Querying chaincode on peer1.org2..."
-chaincodeQuery 1 2 '{"payload":"modifiedInit"}'
+# # Query on chaincode on peer1.org2, check if the result is 90
+# echo "Querying chaincode on peer1.org2..."
+# chaincodeQuery 1 2 '{"payload":"modifiedInit"}'
 
-# Query on chaincode on peer1.org3, check if the result is 90
-echo "Querying chaincode on peer1.org3..."
-chaincodeQuery 1 3 '{"payload":"modifiedInit"}'
+# # Query on chaincode on peer1.org3, check if the result is 90
+# echo "Querying chaincode on peer1.org3..."
+# chaincodeQuery 1 3 '{"payload":"modifiedInit"}'
 
-# Query on chaincode on peer1.org4, check if the result is 90
-echo "Querying chaincode on peer1.org4..."
-chaincodeQuery 1 4 '{"payload":"modifiedInit"}'
+# # Query on chaincode on peer1.org4, check if the result is 90
+# echo "Querying chaincode on peer1.org4..."
+# chaincodeQuery 1 4 '{"payload":"modifiedInit"}'
 
-# Query on chaincode on peer1.org5, check if the result is 90
-echo "Querying chaincode on peer1.org5..."
-chaincodeQuery 1 5 '{"payload":"modifiedInit"}'
+# # Query on chaincode on peer1.org5, check if the result is 90
+# echo "Querying chaincode on peer1.org5..."
+# chaincodeQuery 1 5 '{"payload":"modifiedInit"}'
 
-# Query on chaincode on peer1.org6, check if the result is 90
-echo "Querying chaincode on peer1.org6..."
-chaincodeQuery 1 6 '{"payload":"modifiedInit"}'
+# # Query on chaincode on peer1.org6, check if the result is 90
+# echo "Querying chaincode on peer1.org6..."
+# chaincodeQuery 1 6 '{"payload":"modifiedInit"}'
 
-# Query on chaincode on peer1.org7, check if the result is 90
-echo "Querying chaincode on peer1.org7..."
-chaincodeQuery 1 7 '{"payload":"modifiedInit"}'
+# # Query on chaincode on peer1.org7, check if the result is 90
+# echo "Querying chaincode on peer1.org7..."
+# chaincodeQuery 1 7 '{"payload":"modifiedInit"}'
 
 echo
 echo "========= All GOOD, BYFN execution completed =========== "

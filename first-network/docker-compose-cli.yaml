@@ -40,7 +40,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org1.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/98d574b1d902932dd0b9ea680fcafc33884aa279820867d230bf38ae9bde6931_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/5a7427972b6962cf13926b151d6582b94b66cab06af7465e0ea897ec82329cbb_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
@@ -57,7 +57,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org2.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/8e3767ffc140e392f907ed136abb60ac4b2e4c24e00347045063e839c077a92d_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/26ac2613011abc8a4994a24d27276d3d1fa1b673b230432b796bf957f3cfd0ef_sk
     ports:
       - "8054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
@@ -74,7 +74,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org3.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/e95dea25f82c348720b7be3de18506e43f581aeb6025680fd96711ef85c9b1d0_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1ee62bfb3d0c3a9263c79f4224f8fd73cf288425619ca75bbcbcf32ff84cf6fd_sk
     ports:
       - "9054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
@@ -91,7 +91,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org4.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org4.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/c52012a3ff2dbc8667d411eaa8e303ea085c99244ccb858c2f05d51839b893e8_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/3c9456f024df8b6c792f677bd19e13743d12ba1b9a965f3fda10ee0ebc439633_sk
     ports:
       - "10054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
@@ -108,7 +108,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org5.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org5.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/d5b7ca07706efb942802d6db315fb7bf2936ab7ac77543c93295610ee257364c_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/52ebd829c29acb2fb57d71549f6f3875bc85f4ca2131395f4633355f842f936a_sk
     ports:
       - "11054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
@@ -125,7 +125,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org6.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org6.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a9992ea472686a3c2536358ef90829e249308c8b9fe943872d51cb0d238cece5_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ca32cdab38d7e2ae507e9b0bb095a35b8331023e0149c936cc4da01570b5fbc3_sk
     ports:
       - "12054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
@@ -142,7 +142,7 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca.org7.peach.com
       # - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org7.peach.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/f472f8d34402952025957059d75fca33281a40f42dc9fc38fa3a6b2220ab1fca_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a4c340e2d22a17edaeab37a8c5cca89a678ef1d83cc7e243a1efa85183857279_sk
     ports:
       - "13054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
