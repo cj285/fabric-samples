@@ -295,3 +295,192 @@ Profiles:
                 - *Org7
             Capabilities:
                 <<: *ApplicationCapabilities
+    Org1Org2Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org1Org3Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org3
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org1Org4Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org4
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org1Org5Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org5
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org1Org6Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org6
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org1Org7Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org7
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org2Org3Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org2
+                - *Org3
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org2Org4Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org2
+                - *Org4
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org2Org5Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org2
+                - *Org5
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org2Org6Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org2
+                - *Org6
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org2Org7Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org2
+                - *Org7
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org3Org4Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org3
+                - *Org4
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org3Org5Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org3
+                - *Org5
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org3Org6Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org3
+                - *Org6
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org3Org7Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org3
+                - *Org7
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org4Org5Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org4
+                - *Org5
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org4Org6Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org4
+                - *Org6
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org4Org7Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org4
+                - *Org7
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org5Org6Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org5
+                - *Org6
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org5Org7Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org5
+                - *Org7
+            Capabilities:
+                <<: *ApplicationCapabilities
+    Org6Org7Channel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org6
+                - *Org7
+            Capabilities:
+                <<: *ApplicationCapabilities

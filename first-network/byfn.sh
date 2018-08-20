@@ -409,6 +409,7 @@ function generateChannelArtifacts() {
     exit 1
   fi
   echo
+
   echo "#################################################################"
   echo "### Generating channel configuration transaction 'channel.tx' ###"
   echo "#################################################################"
@@ -421,6 +422,259 @@ function generateChannelArtifacts() {
     exit 1
   fi
   echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel12.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org1Org2Channel -outputCreateChannelTx ./channel-artifacts/channel12.tx -channelID "$CHANNEL_NAME"12
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel.tx13' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org1Org3Channel -outputCreateChannelTx ./channel-artifacts/channel13.tx -channelID "$CHANNEL_NAME"13
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel.tx14' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org1Org4Channel -outputCreateChannelTx ./channel-artifacts/channel14.tx -channelID "$CHANNEL_NAME"14
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel.tx15' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org1Org5Channel -outputCreateChannelTx ./channel-artifacts/channel15.tx -channelID "$CHANNEL_NAME"15
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel.tx16' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org1Org6Channel -outputCreateChannelTx ./channel-artifacts/channel16.tx -channelID "$CHANNEL_NAME"16
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel17.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org1Org7Channel -outputCreateChannelTx ./channel-artifacts/channel17.tx -channelID "$CHANNEL_NAME"17
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel23.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org2Org3Channel -outputCreateChannelTx ./channel-artifacts/channel23.tx -channelID "$CHANNEL_NAME"23
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel24.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org2Org4Channel -outputCreateChannelTx ./channel-artifacts/channel24.tx -channelID "$CHANNEL_NAME"24
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel.tx25' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org2Org5Channel -outputCreateChannelTx ./channel-artifacts/channel25.tx -channelID "$CHANNEL_NAME"25
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel26.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org2Org6Channel -outputCreateChannelTx ./channel-artifacts/channel26.tx -channelID "$CHANNEL_NAME"26
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel27.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org2Org7Channel -outputCreateChannelTx ./channel-artifacts/channel27.tx -channelID "$CHANNEL_NAME"27
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel34.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org3Org4Channel -outputCreateChannelTx ./channel-artifacts/channel34.tx -channelID "$CHANNEL_NAME"34
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel35.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org3Org5Channel -outputCreateChannelTx ./channel-artifacts/channel35.tx -channelID "$CHANNEL_NAME"35
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel36.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org3Org6Channel -outputCreateChannelTx ./channel-artifacts/channel36.tx -channelID "$CHANNEL_NAME"36
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel37.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org3Org7Channel -outputCreateChannelTx ./channel-artifacts/channel37.tx -channelID "$CHANNEL_NAME"37
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel45.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org4Org5Channel -outputCreateChannelTx ./channel-artifacts/channel45.tx -channelID "$CHANNEL_NAME"45
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel46.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org4Org6Channel -outputCreateChannelTx ./channel-artifacts/channel46.tx -channelID "$CHANNEL_NAME"46
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel47.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org4Org7Channel -outputCreateChannelTx ./channel-artifacts/channel47.tx -channelID "$CHANNEL_NAME"47
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel56.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org5Org6Channel -outputCreateChannelTx ./channel-artifacts/channel56.tx -channelID "$CHANNEL_NAME"56
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel57.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org5Org7Channel -outputCreateChannelTx ./channel-artifacts/channel57.tx -channelID "$CHANNEL_NAME"57
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+  echo "###################################################################"
+  echo "### Generating channel configuration transaction 'channel67.tx' ###"
+  echo "###################################################################"
+  set -x
+  configtxgen -profile Org6Org7Channel -outputCreateChannelTx ./channel-artifacts/channel67.tx -channelID "$CHANNEL_NAME"67
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate channel configuration transaction..."
+    exit 1
+  fi
+  echo
+
 
   echo "#################################################################"
   echo "#######    Generating anchor peer update for Org1MSP   ##########"
@@ -519,7 +773,600 @@ function generateChannelArtifacts() {
     exit 1
   fi
   echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org1MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org2Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors12.tx -channelID "$CHANNEL_NAME"12 -asOrg Org1MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org2MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org2Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org2MSPanchors12.tx -channelID "$CHANNEL_NAME"12 -asOrg Org2MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org2MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org1MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org3Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors13.tx -channelID "$CHANNEL_NAME"13 -asOrg Org1MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org3Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors13.tx -channelID "$CHANNEL_NAME"13 -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org3MSP..."
+    exit 1
+  fi
+  echo
+#--
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org1MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org4Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors14.tx -channelID "$CHANNEL_NAME"14 -asOrg Org1MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org4Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors14.tx -channelID "$CHANNEL_NAME"14 -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org4MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org1MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors15.tx -channelID "$CHANNEL_NAME"15 -asOrg Org1MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#--
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors15.tx -channelID "$CHANNEL_NAME"15 -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org5MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org1MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors16.tx -channelID "$CHANNEL_NAME"16 -asOrg Org1MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors16.tx -channelID "$CHANNEL_NAME"16 -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org6MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org1MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org1MSPanchors17.tx -channelID "$CHANNEL_NAME"17 -asOrg Org1MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org1Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors17.tx -channelID "$CHANNEL_NAME"17 -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org7MSP..."
+    exit 1
+  fi
+  echo
+#---
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org2MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org3Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org2MSPanchors23.tx -channelID "$CHANNEL_NAME"23 -asOrg Org2MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org3Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors23.tx -channelID "$CHANNEL_NAME"23 -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org3MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org2MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org4Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org2MSPanchors24.tx -channelID "$CHANNEL_NAME"24 -asOrg Org2MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org4Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors24.tx -channelID "$CHANNEL_NAME"24 -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org2MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org2MSPanchors25.tx -channelID "$CHANNEL_NAME"25 -asOrg Org2MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors25.tx -channelID "$CHANNEL_NAME"25 -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org2MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org2MSPanchors26.tx -channelID "$CHANNEL_NAME"26 -asOrg Org2MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors26.tx -channelID "$CHANNEL_NAME"26 -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org2MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org2MSPanchors27.tx -channelID "$CHANNEL_NAME"27 -asOrg Org2MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org2Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors27.tx -channelID "$CHANNEL_NAME"27 -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org4Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors34.tx -channelID "$CHANNEL_NAME"34 -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org4Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors34.tx -channelID "$CHANNEL_NAME"34 -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors35.tx -channelID "$CHANNEL_NAME"35 -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors35.tx -channelID "$CHANNEL_NAME"35 -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors36.tx -channelID "$CHANNEL_NAME"36 -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors36.tx -channelID "$CHANNEL_NAME"36 -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org3MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org3MSPanchors37.tx -channelID "$CHANNEL_NAME"37 -asOrg Org3MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org3Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors37.tx -channelID "$CHANNEL_NAME"37 -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org4Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors45.tx -channelID "$CHANNEL_NAME"45 -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org4Org5Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors45.tx -channelID "$CHANNEL_NAME"45 -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org4Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors46.tx -channelID "$CHANNEL_NAME"46 -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org4Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors46.tx -channelID "$CHANNEL_NAME"46 -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org4MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org4Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org4MSPanchors47.tx -channelID "$CHANNEL_NAME"47 -asOrg Org4MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org4Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors47.tx -channelID "$CHANNEL_NAME"47 -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org5Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors56.tx -channelID "$CHANNEL_NAME"56 -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org5Org6Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors56.tx -channelID "$CHANNEL_NAME"56 -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org5MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org5Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org5MSPanchors57.tx -channelID "$CHANNEL_NAME"57 -asOrg Org5MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org5Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors57.tx -channelID "$CHANNEL_NAME"57 -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+#---
+#---
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org6MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org6Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org6MSPanchors67.tx -channelID "$CHANNEL_NAME"67 -asOrg Org6MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
+
+  echo "#################################################################"
+  echo "#######    Generating anchor peer update for Org7MSP   ##########"
+  echo "#################################################################"
+  set -x
+  configtxgen -profile Org6Org7Channel -outputAnchorPeersUpdate \
+    ./channel-artifacts/Org7MSPanchors67.tx -channelID "$CHANNEL_NAME"67 -asOrg Org7MSP
+  res=$?
+  set +x
+  if [ $res -ne 0 ]; then
+    echo "Failed to generate anchor peer update for Org1MSP..."
+    exit 1
+  fi
+  echo
 }
+
 
 # Obtain the OS and Architecture string that will be used to select the correct
 # native binaries for your platform, e.g., darwin-amd64 or linux-amd64

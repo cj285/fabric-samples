@@ -117,22 +117,23 @@ setGlobals() {
 updateAnchorPeers() {
   PEER=$1
   ORG=$2
+  MY_CHANNEL_NAME=$3
   setGlobals $PEER $ORG
 
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer channel update -o orderer.peach.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx >&log.txt
+    peer channel update -o orderer.peach.com:7050 -c $MY_CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors"$4".tx >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer channel update -o orderer.peach.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
+    peer channel update -o orderer.peach.com:7050 -c $MY_CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors"$4".tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
     res=$?
     set +x
   fi
   cat log.txt
   verifyResult $res "Anchor peer update failed"
-  echo "===================== Anchor peers updated for org '$CORE_PEER_LOCALMSPID' on channel '$CHANNEL_NAME' ===================== "
+  echo "===================== Anchor peers updated for org '$CORE_PEER_LOCALMSPID' on channel '$MY_CHANNEL_NAME' ===================== "
   sleep $DELAY
   echo
 }
@@ -141,10 +142,11 @@ updateAnchorPeers() {
 joinChannelWithRetry() {
   PEER=$1
   ORG=$2
+  MY_CHANNEL_NAME=$3
   setGlobals $PEER $ORG
 
   set -x
-  peer channel join -b $CHANNEL_NAME.block >&log.txt
+  peer channel join -b $MY_CHANNEL_NAME.block >&log.txt
   res=$?
   set +x
   cat log.txt
@@ -156,7 +158,7 @@ joinChannelWithRetry() {
   else
     COUNTER=1
   fi
-  verifyResult $res "After $MAX_RETRY attempts, peer${PEER}.org${ORG} has failed to join channel '$CHANNEL_NAME' "
+  verifyResult $res "After $MAX_RETRY attempts, peer${PEER}.org${ORG} has failed to join channel '$MY_CHANNEL_NAME' "
 }
 
 installChaincode() {
@@ -177,26 +179,73 @@ installChaincode() {
 instantiateChaincode() {
   PEER=$1
   ORG=$2
+  MY_CHANNEL_NAME=$4
   setGlobals $PEER $ORG
   VERSION=${3:-1.0}
+  MSP_PEERS=""
+  if [ $MY_CHANNEL_NAME = "peach" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach12" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer','Org2MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach13" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer', 'Org3MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach14" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer', 'Org4MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach15" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer', 'Org5MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach16" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer', 'Org6MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach17" ]; then
+    MSP_PEERS="OR ('Org1MSP.peer', 'Org7MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach23" ]; then
+    MSP_PEERS="OR ('Org2MSP.peer', 'Org3MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach24" ]; then
+    MSP_PEERS="OR ('Org2MSP.peer', 'Org4MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach25" ]; then
+    MSP_PEERS="OR ('Org2MSP.peer', 'Org5MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach26" ]; then
+    MSP_PEERS="OR ('Org2MSP.peer', 'Org6MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach27" ]; then
+    MSP_PEERS="OR ('Org2MSP.peer', 'Org7MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach34" ]; then
+    MSP_PEERS="OR ('Org3MSP.peer', 'Org4MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach35" ]; then
+    MSP_PEERS="OR ('Org3MSP.peer', 'Org5MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach36" ]; then
+    MSP_PEERS="OR ('Org3MSP.peer', 'Org6MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach37" ]; then
+    MSP_PEERS="OR ('Org3MSP.peer', 'Org7MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach45" ]; then
+    MSP_PEERS="OR ('Org4MSP.peer', 'Org5MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach46" ]; then
+    MSP_PEERS="OR ('Org4MSP.peer', 'Org6MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach47" ]; then
+    MSP_PEERS="OR ('Org4MSP.peer', 'Org7MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach56" ]; then
+    MSP_PEERS="OR ('Org5MSP.peer', 'Org6MSP.peer')"
+  elif [ $MY_CHANNEL_NAME = "peach57" ]; then
+    MSP_PEERS="OR ('Org5MSP.peer', 'Org7MSP.peer')"
+  else
+    MSP_PEERS="OR ('Org6MSP.peer', 'Org7MSP.peer')"
+  fi
 
   # while 'peer chaincode' command can get the orderer endpoint from the peer
   # (if join was successful), let's supply it directly as we know it using
   # the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode instantiate -o orderer.peach.com:7050 -C $CHANNEL_NAME -n ficc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[""]}' -P "OR ('Org1MSP.peer','Org2MSP.peer', 'Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
+    peer chaincode instantiate -o orderer.peach.com:7050 -C $MY_CHANNEL_NAME -n ficc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[""]}' -P "$MSP_PEERS">&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode instantiate -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ficc -l ${LANGUAGE} -v 1.0 -c '{"Args":[""]}' -P "OR ('Org1MSP.peer','Org2MSP.peer','Org3MSP.peer', 'Org4MSP.peer', 'Org5MSP.peer', 'Org6MSP.peer', 'Org7MSP.peer')" >&log.txt
+    peer chaincode instantiate -o orderer.peach.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $MY_CHANNEL_NAME -n ficc -l ${LANGUAGE} -v 1.0 -c '{"Args":[""]}' -P "$MSP_PEERS">&log.txt
     res=$?
     set +x
   fi
   cat log.txt
-  verifyResult $res "Chaincode instantiation on peer${PEER}.org${ORG} on channel '$CHANNEL_NAME' failed"
-  echo "===================== Chaincode is instantiated on peer${PEER}.org${ORG} on channel '$CHANNEL_NAME' ===================== "
+  verifyResult $res "Chaincode instantiation on peer${PEER}.org${ORG} on channel '$MY_CHANNEL_NAME' failed"
+  echo "===================== Chaincode is instantiated on peer${PEER}.org${ORG} on channel '$MY_CHANNEL_NAME' ===================== "
   echo
 }
 
